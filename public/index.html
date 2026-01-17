@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proxy Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>🚀 NVIDIA NIM Proxy Dashboard</h1>
+        <p class="subtitle">Real-time monitoring and logging</p>
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-value" id="totalLogs">0</div>
+            <div class="stat-label">Total Logs</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="errorCount">0</div>
+            <div class="stat-label">Errors</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="requestCount">0</div>
+            <div class="stat-label">Requests</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" id="successCount">0</div>
+            <div class="stat-label">Successes</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="filter-group">
+          <label>Level:</label>
+          <select id="levelFilter">
+            <option value="">All Levels</option>
+            <option value="info">Info</option>
+            <option value="success">Success</option>
+            <option value="warning">Warning</option>
+            <option value="error">Error</option>
+            <option value="debug">Debug</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Category:</label>
+          <select id="categoryFilter">
+            <option value="">All Categories</option>
+            <option value="system">System</option>
+            <option value="request">Request</option>
+            <option value="model">Model</option>
+            <option value="api">API</option>
+            <option value="response">Response</option>
+            <option value="streaming">Streaming</option>
+            <option value="config">Config</option>
+            <option value="feature">Feature</option>
+            <option value="formatting">Formatting</option>
+          </select>
+        </div>
+        <button onclick="clearLogs()">Clear Logs</button>
+        <button onclick="toggleAutoScroll()">
+          Auto-scroll: <span id="autoScrollStatus">ON</span>
+        </button>
+        <button onclick="exportLogs()">Export Logs</button>
+      </div>
+
+      <div class="log-container" id="logContainer">
+        <div class="log-placeholder">
+          <div class="placeholder-icon">📊</div>
+          <p>Waiting for logs...</p>
+          <p class="placeholder-hint">
+            Logs will appear here as requests are processed
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+  </body>
+</html>
