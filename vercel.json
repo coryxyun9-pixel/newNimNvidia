@@ -4,20 +4,23 @@
     {
       "src": "server.js",
       "use": "@vercel/node"
-    },
-    {
-      "src": "public/**",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/(css|js|images|assets)/(.*)",
-      "dest": "/public/$1/$2"
+      "src": "/api/(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/v1/(.*)",
+      "dest": "/server.js"
     },
     {
       "src": "/(.*)",
-      "dest": "server.js"
+      "dest": "/server.js"
     }
-  ]
+  ],
+  "env": {
+    "NIM_API_KEY": "@nim_api_key"
+  }
 }
